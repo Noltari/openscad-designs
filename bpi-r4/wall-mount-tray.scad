@@ -312,33 +312,26 @@ module fan_stands()
 	hs1_off_h = -(hs1_h / 2 + fan_off);
 	hs1_off_w = vs1_off_w;
 
-	vs2_l = 10;
+	vs2_l = 5;
 	vs2_w = 5 - diff_margin;
-	vs2_h = fan_off + 5 + 10 - diff_margin;
-	vs2_off_l = 91;
+	vs2_h = fan_off + 15 + 10;
+	vs2_off_l = 112.5;
 	vs2_off_h = 10 - (vs2_h / 2);
-	vs2_off_w = -(vs2_w / 2 + diff_margin);
+	vs2_off_w = bpi_r4_w + (vs2_w / 2) + diff_margin;
 
-	vs3_l = 8.4;
-	vs3_w = 5 - diff_margin;
-	vs3_h = fan_off + 15 + 10;
-	vs3_off_l = 86 + vs3_l / 2;
-	vs3_off_h = 10 - (vs3_h / 2);
-	vs3_off_w = -(vs2_w / 2 + diff_margin);
-
-	vs4_l = 5;
-	vs4_w = 5 - diff_margin;
-	vs4_h = fan_off + 15 + 10;
-	vs4_off_l = 112.5;
-	vs4_off_h = 10 - (vs4_h / 2);
-	vs4_off_w = bpi_r4_w + (vs4_w / 2) + diff_margin;
-
-	hs2_l = vs4_l;
+	hs2_l = vs2_l;
 	hs2_w = 69.4;
 	hs2_h = 15;
-	hs2_off_l = vs4_off_l;
+	hs2_off_l = vs2_off_l;
 	hs2_off_h = -(hs2_h / 2 + fan_off);
-	hs2_off_w = bpi_r4_w - hs2_w / 2 + vs4_w + diff_margin;
+	hs2_off_w = bpi_r4_w - hs2_w / 2 + vs2_w + diff_margin;
+
+	vs3_l = 5;
+	vs3_w = 5 - diff_margin;
+	vs3_h = fan_off + 15 + 10;
+	vs3_off_l = 91 + vs3_l / 2;
+	vs3_off_h = 10 - (vs3_h / 2);
+	vs3_off_w = -(vs3_w / 2) - 5;
 
 	ant_h = 5 + diff_margin;
 	ant_d = 6.2;
@@ -363,15 +356,11 @@ module fan_stands()
 
 			translate([vs2_off_l, vs2_off_w, vs2_off_h])
 				cube([vs2_l, vs2_w, vs2_h], center=true);
-			translate([vs3_off_l, vs3_off_w, vs3_off_h])
-				cube([vs3_l, vs3_w, vs3_h], center=true);
-
-			translate([vs4_off_l, vs4_off_w, vs4_off_h])
-				cube([vs4_l, vs4_w, vs4_h], center=true);
 			translate([hs2_off_l, hs2_off_w, hs2_off_h])
 				cube([hs2_l, hs2_w, hs2_h], center=true);
 
-
+			translate([vs3_off_l, vs3_off_w, vs3_off_h])
+				cube([vs3_l, vs3_w, vs3_h], center=true);
 		}
 
 		translate([ant1_off_l, ant1_off_w, ant1_off_h])
