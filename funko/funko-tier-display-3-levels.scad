@@ -4,20 +4,53 @@ eps = 0.1;
 
 shelf_d = 80;
 shelf_w = 240;
-shelf_h = 8;
+shelf_h = 5;
 shelf_h_sep = 80;
 
 wall_d = shelf_d;
-wall_w = 6;
+wall_w = 4;
 wall_cut = 25;
 
 module shelf()
 {
-	st_l = shelf_d;
-	st_w = shelf_w;
-	st_h = shelf_h;
+    st_l = shelf_d;
+    st_w = shelf_w;
+    st_h = shelf_h;
 
-	cube([st_l, st_w, st_h], center=true);
+    hole_d = 4;
+    pitch_x = hole_d * 2;
+    pitch_y = hole_d * 2;
+    margin = 6;
+
+    rows = floor((st_w - 2*margin - hole_d) / pitch_y);
+
+    difference()
+    {
+        cube([st_l, st_w, st_h], center=true);
+
+        for (row = [0 : rows])
+        {
+            y = -st_w/2 + margin + hole_d/2 + row*pitch_y;
+            offset_x = (row % 2) * pitch_x/2;
+
+            for (
+                x = [
+                    -st_l/2 + margin + hole_d/2 + offset_x :
+                    pitch_x :
+                     st_l/2 - margin - hole_d/2
+                ]
+            )
+            {
+                translate([x, y, 0])
+                    cylinder(
+                        h = st_h + 2,
+                        d = hole_d,
+                        center = true,
+                        $fn = 32
+                    );
+            }
+        }
+    }
 }
 
 module wall(wall_h)
@@ -103,8 +136,10 @@ module walls()
 	{
 		translate([0,(wall_w / 2), 0])
 			wall_comb();
+/*
 		translate([0, shelf_w / 2, 0])
 			wall_comb();
+*/
 		translate([0, shelf_w - (wall_w / 2), 0])
 			wall_comb();
 	}
