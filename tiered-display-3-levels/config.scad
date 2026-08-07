@@ -10,9 +10,9 @@ color_shelf = "green";
 color_stand = "orange";
 color_wall = "red";
 
-hp_strut = 2.0;
-hp_spacing = 12;
-hp_frame = 4;
+sw_strut = 4;
+sw_max_ang = 30;
+sw_max_bridge = 40;
 
 shelf_d = 80;
 shelf_w = 240;

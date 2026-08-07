@@ -6,11 +6,11 @@ wall_h = shelf_h_sep * 3;
 
 module wall(height)
 {
-	hp_w = wall_w;
-	hp_h = wall_h;
-	hp_t = wall_l;
+	sw_l = wall_w;
+	sw_h = wall_h;
+	sw_thick = wall_l;
 
-	rotate([90, 0, 90])
+	rotate([0, 0, 0])
 		color(color_wall)
-			hex_panel([hp_w, hp_h, hp_t], strut=hp_strut, spacing=hp_spacing, frame=hp_frame);
+			sparse_wall(h=sw_h, l=sw_l, thick=sw_thick, strut=sw_strut, maxang=sw_max_ang, max_bridge=sw_max_bridge, frame=[true, false]);
 }

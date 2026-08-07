@@ -6,11 +6,11 @@ base_h = thickness;
 
 module base()
 {
-	hp_w = base_w;
-	hp_h = base_l;
-	hp_t = base_h;
+	sw_l = base_w;
+	sw_h = base_l;
+	sw_thick = base_h;
 
-	rotate([0, 0, 90])
+	rotate([0, 90, 0])
 		color(color_base)
-			hex_panel([hp_w, hp_h, hp_t], strut=hp_strut, spacing=hp_spacing, frame=hp_frame);
+			sparse_wall(h=sw_h, l=sw_l, thick=sw_thick, strut=sw_strut, maxang=sw_max_ang, max_bridge=sw_max_bridge, frame=[true, false]);
 }

@@ -12,11 +12,11 @@ module shelf()
 
 module shelf_stand()
 {
-	hp_w = shelf_w;
-	hp_h = shelf_h_sep;
-	hp_t = thickness;
+	sw_l = shelf_w;
+	sw_h = shelf_h_sep;
+	sw_thick = thickness;
 
-	rotate([90, 0, 90])
+	rotate([0, 0, 0])
 		color(color_stand)
-			hex_panel([hp_w, hp_h, hp_t], strut=hp_strut, spacing=hp_spacing, frame=hp_frame);
+			sparse_wall(h=sw_h, l=sw_l, thick=sw_thick, strut=sw_strut, maxang=sw_max_ang, max_bridge=sw_max_bridge, frame=[true, false]);
 }
