@@ -17,5 +17,5 @@ module shelf_stand()
 	c_h = shelf_h_sep;
 
 	color(color_stand)
-		cube([c_l, c_w, c_h], center=true);
+		sparse_cuboid([c_l, c_w, c_h], maxang=sc_max_ang, max_bridge=sc_max_bridge, strut=sc_strut);
 }

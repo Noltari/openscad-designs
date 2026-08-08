@@ -7,5 +7,5 @@ base_h = thickness;
 module base()
 {
 	color(color_base)
-		cube([base_l, base_w, base_h], center=true);
+		sparse_cuboid([base_l, base_w, base_h], "Z", maxang=sc_max_ang, max_bridge=sc_max_bridge, strut=sc_strut);
 }
